@@ -8,7 +8,6 @@ A threadsafe future implementation that blocks caller until a value is set.
 ### Create a future value object
 
     future = FutureValue.new
-    future.value = 10
     
 ### Create a future value object with value
 
@@ -16,14 +15,21 @@ If the value is known at instantiation time, can pass the value. This is more ef
 
     future = FutureValue.new(10)
 
-### Check if FutureValue has a value (non-blocking)
+### Set a value
+
+    future.value = 10
+
+A RuntimeError will be raised if value is already set.
+
+  
+### Get a value (non-blocking)
 
     until future.has_value?
       sleep 1
     end
     value = future.value
     
-### Wait until future has a value (blocking)
+### Get a value (blocking)
 
     value = future.value
 
@@ -56,7 +62,7 @@ If the value is known at instantiation time, can pass the value. This is more ef
 
 ## Contributing
 
-1. Fork it ( https://github.com/[DougEverly]/future_value/fork )
+1. Fork it ( https://github.com/DougEverly/future_value/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
