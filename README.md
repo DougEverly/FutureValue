@@ -21,6 +21,8 @@ If the value is known at instantiation time, can pass the value. This is more ef
 
 A RuntimeError will be raised if value is already set.
 
+    future.value = 10 unless future.has_value?
+
   
 ### Get a value (non-blocking)
 
